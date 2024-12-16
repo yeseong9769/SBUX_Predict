@@ -1,24 +1,45 @@
-# SBUX_Predict
-이 프로젝트는 LSTM(Long Short-Term Memory) 모델을 사용하여 스타벅스의 주가 데이터를 예측하는 과정을 다룹니다. 주요 단계는 데이터 로드, 전처리, 모델 구축 및 학습, 그리고 최종 예측으로 구성되어 있습니다.
+# SBUX Stock Price Prediction using LSTM
+이 프로젝트는 LSTM(Long Short-Term Memory) 신경망을 사용하여 스타벅스(SBUX) 주가를 예측하는 딥러닝 모델을 구현합니다.
 
 ## 주요 구성
-1. **라이브러리 임포트**
-   - `numpy`, `pandas`, `matplotlib`, `torch`, `torch.nn` 등을 사용하여 데이터 처리 및 시각화를 수행합니다.
+### 1. 데이터 전처리
+- pandas를 사용한 주가 데이터 로드 및 정제
+- MinMaxScaler를 통한 데이터 정규화
+- Sliding Window 기법을 활용한 시계열 데이터 생성
+- 학습/테스트 데이터 분리
+   
+### 2. LSTM 모델 아키텍처
+- 주요 하이퍼파라미터:
+  - Input size: 3 (Open, High, Low)
+  - Hidden size: 32
+  - Number of layers: 2
+  - Output size: 1 (Close price prediction)
+  - Sequence length: 7
+- PyTorch 프레임워크 기반 구현
 
-2. **데이터 로드 및 시각화**
-   - 스타벅스 주가 데이터를 CSV 파일에서 불러오고, 결측치 확인 및 초기 데이터 시각화를 수행합니다.
+### 3. 모델 학습
+- 손실 함수: MSE(Mean Squared Error)
+- 최적화 알고리즘: Adam optimizer
+- 학습률(Learning rate): 0.01
+- 에포크(Epochs): 1000
 
-3. **데이터 전처리**
-   - `MinMaxScaler`를 이용해 데이터를 정규화하고, Sliding Window 기법으로 시계열 데이터를 생성합니다.
+### 4. 성능 평가
+- RMSE(Root Mean Square Error)를 통한 예측 정확도 평가
+- 실제 주가와 예측 주가의 시각화 비교
 
-4. **모델 구축**
-   - PyTorch 기반으로 LSTM 모델을 정의합니다.
-   - 주요 하이퍼파라미터: 입력 크기, 은닉 노드 개수, 레이어 수, 학습률 등.
+## 실행 방법
+1. 필요한 라이브러리 설치
+```bash
+pip install numpy pandas matplotlib torch scikit-learn
+```
 
-5. **학습 및 평가**
-   - 학습 데이터와 테스트 데이터를 분리한 후 모델을 학습시킵니다.
-   - 손실 함수(MSE)와 Adam 옵티마이저를 사용합니다.
-   - 예측 결과를 역정규화하여 실제 주가로 변환합니다.
+2. 주피터 노트북 실행
+```bash
+jupyter notebook SBUX_Prediction.ipynb
+```
 
-6. **시각화**
-   - 실제 데이터와 예측 데이터를 비교하는 그래프를 출력합니다.
+## 향후 개선 방향
+1. 추가적인 특성(거래량, 기술적 지표 등) 활용
+2. 하이퍼파라미터 최적화
+3. 다양한 시계열 모델과의 성능 비교
+4. 더 긴 예측 기간에 대한 모델 확장
