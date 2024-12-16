@@ -1,5 +1,5 @@
 # SBUX Stock Price Prediction using LSTM
-이 프로젝트는 LSTM(Long Short-Term Memory) 신경망을 사용하여 스타벅스(SBUX) 주가를 예측하는 딥러닝 모델을 구현합니다.
+이 프로젝트는 LSTM(Long Short-Term Memory) 신경망을 사용하여 스타벅스(SBUX) 주가를 예측하는 딥러닝 모델을 구현합니다. LSTM 모델을 사용하여 과거 주가 데이터를 학습하고, 미래 주가를 예측하는 시계열 예측 모델을 구현하며, 다음과 같은 주요 단계로 구성됩니다.
 
 ## 주요 구성
 ### 1. 데이터 전처리
